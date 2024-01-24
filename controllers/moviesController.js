@@ -63,28 +63,28 @@ exports.addPerformer = async function addPerformer(req, res) {
 }
 
 // show route needs to be last in sequence so it doesn't tarnish anything.
+// BELOW: example of how front end would build route for adding movie on creating performer.
 
-
-const createPerformerAndAddToMovie = async () => {
-    try {
-        const response = await fetch('/performers', {
-            method: 'POST',
-            body: JSON.stringify({
-                name,
-                birthdate,
-                credits: [movie.id]
-            })
-        })
-        const createdPerformer = await response.json()
-        const responsetwo = await fetch(`/movies/${movie._id}/performers/${createdPerformer._id}`, {
-            method: 'POST'
-        })
-        const completedData = await response.json()
-        // something else front end wants to do with this data.
-    } catch (error) {
-        res.status(400).json({msg: error.message })
-    }
-}
+// const createPerformerAndAddToMovie = async () => {
+//     try {
+//         const response = await fetch('/performers', {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 name,
+//                 birthdate,
+//                 credits: [movie.id]
+//             })
+//         })
+//         const createdPerformer = await response.json()
+//         const responsetwo = await fetch(`/movies/${movie._id}/performers/${createdPerformer._id}`, {
+//             method: 'POST'
+//         })
+//         const completedData = await response.json()
+//         // something else front end wants to do with this data.
+//     } catch (error) {
+//         res.status(400).json({msg: error.message })
+//     }
+// }
 
 
 // THE BEST FUNCTIONS AND ROUTES ARE ONES THAT DO LESS THINGS. If you make a route that does two things it's not as good. just make an additional route.
